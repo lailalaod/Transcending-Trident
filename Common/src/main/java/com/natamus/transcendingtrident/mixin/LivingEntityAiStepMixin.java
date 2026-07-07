@@ -11,6 +11,7 @@ import com.natamus.transcendingtrident.config.ConfigHandler;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TridentItem;
 
 @Mixin(value = LivingEntity.class, priority = 1001)
@@ -21,8 +22,11 @@ public class LivingEntityAiStepMixin {
 	private boolean aiStep_isInWaterOrRain(Entity entity) {
 		if (this.autoSpinAttackTicks > 0) {
 			if (entity instanceof Player player) {
-				if (PlayerFunctions.isHoldingWater(player) || !ConfigHandler.mustHoldBucketOfWater) {
-					if (player.getMainHandItem().getItem() instanceof TridentItem || player.getOffhandItem().getItem() instanceof TridentItem) {
+				if (!ConfigHandler.mustHoldBucketOfWater || PlayerFunctions.isHoldingWater(player)) {
+					if (player.getMainHandItem().getItem() instanceof TridentItem) {
+						return true;
+					}
+					if (player.getOffhandItem().getItem() instanceof TridentItem) {
 						return true;
 					}
 				}
