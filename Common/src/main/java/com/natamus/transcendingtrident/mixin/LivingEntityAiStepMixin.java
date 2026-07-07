@@ -21,11 +21,8 @@ public class LivingEntityAiStepMixin {
 	private boolean aiStep_isInWaterOrRain(Entity entity) {
 		if (this.autoSpinAttackTicks > 0) {
 			if (entity instanceof Player player) {
-				if (!ConfigHandler.mustHoldBucketOfWater || PlayerFunctions.isHoldingWater(player)) {
-					if (player.getMainHandItem().getItem() instanceof TridentItem) {
-						return true;
-					}
-					if (player.getOffhandItem().getItem() instanceof TridentItem) {
+				if (PlayerFunctions.isHoldingWater(player) || !ConfigHandler.mustHoldBucketOfWater) {
+					if (player.getMainHandItem().getItem() instanceof TridentItem || player.getOffhandItem().getItem() instanceof TridentItem) {
 						return true;
 					}
 				}
