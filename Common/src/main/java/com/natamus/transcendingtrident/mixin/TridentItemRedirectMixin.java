@@ -9,7 +9,6 @@ import com.natamus.transcendingtrident.config.ConfigHandler;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TridentItem;
 
 @Mixin(value = TridentItem.class, priority = 1001)
