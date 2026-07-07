@@ -4,8 +4,9 @@
   "package": "com.natamus.transcendingtrident.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "EntityMixin",
-    "TridentItemMixin"
+    "LivingEntityAiStepMixin",
+    "TridentItemMixin",
+    "TridentItemRedirectMixin"
   ],
   "client": [
   
